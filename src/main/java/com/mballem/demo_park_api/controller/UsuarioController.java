@@ -1,5 +1,6 @@
 package com.mballem.demo_park_api.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("api/v1/usuarios")
 public class UsuarioController {
 	
-	private final UsuarioService usuarioService = null;
-	
+	@Autowired
+	private  final UsuarioService usuarioService;
+
 	@PostMapping 
 	public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
 		Usuario user = usuarioService.salvar(usuario);
