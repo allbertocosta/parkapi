@@ -1,5 +1,7 @@
 package com.mballem.demo_park_api.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,12 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> updatePassword(@PathVariable Long id, @RequestBody Usuario usuario) {
 		Usuario user = usuarioService.editarSenha(id, usuario.getPassword());
 		return ResponseEntity.ok(user);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> getAll() {
+		List<Usuario> users = usuarioService.buscarTodos();
+		return ResponseEntity.ok(users);
 	}
 }
 	
